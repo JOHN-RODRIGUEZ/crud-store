@@ -5,17 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
+use function Laravel\Prompts\search;
 
 class StoreController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    private const FOLDER_PATH_LOCAL = 'img/reservas/store';
+    public function index(Request $request)
     {
-
-        $stores=Store::all();
-        return view('Store.index',compact('stores'));
+        $search=$request->search;
+        $stores=Store::where('name','like','%'.$request->search.'%')->latest('id')->paginate(8);
+        return view('Store.index',compact('stores','search'));
         //
     }
 

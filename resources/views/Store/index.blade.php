@@ -2,16 +2,23 @@
 @section('content')
 
 
+<div class="container ">
+    <div class="p-4 rounded"></div>
+        <form class="row">
+            @csrf
+            <div class="col-md-4">
+                    <h3>List of Store</h3>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="input-group ">
+                        <input type="search" name="search" value="{{ $search }}" class="form-control" placeholder="Search Store...">
+                        <button class="btn  btn btn-primary"> <i class='bx bx-search-alt-2'></i>Search</button>
+                    </div>
+                </div>
+        </form>
 
 
-
-
-<div class="row ">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <br><br>
-        <h3>List of Store</h3>
-        <br>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">
             New
@@ -19,8 +26,10 @@
   
         <div class="table-responsive">
             <br>
-            <table class="table ">
-                <thead class="bg-dark text-white">
+            
+            <table class="table table-striped">
+               <table class="table ">
+                <thead class="bg-cyan-500 text-black">
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
@@ -59,13 +68,12 @@
 
                 </tbody>
             </table>
+            </table>
         </div>
         @include('Store.create')
 
-    </div>
     <div class="col-md-2"></div>
 </div>
 
-
-
 @endsection
+
